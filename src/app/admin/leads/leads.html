@@ -1,0 +1,45 @@
+<app-sidebar></app-sidebar>
+<app-navbar></app-navbar>
+
+<div class="ml-64 p-6">
+
+    <h2 class="text-2xl font-bold mb-4">Leads</h2>
+
+    <input [(ngModel)]="search" placeholder="Search lead" class="border p-2 mb-4 w-64" />
+
+    <table class="w-full bg-white shadow rounded">
+
+        <thead class="bg-gray-200">
+            <tr>
+                <th class="p-3">Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr *ngFor="let lead of leads | filter:search" class="border-b">
+
+                <td class="p-3">{{lead.name}}</td>
+                <td>{{lead.email}}</td>
+                <td>{{lead.phone}}</td>
+                <td>{{lead.status}}</td>
+                <td>
+                    <button [routerLink]="['/edit-lead', lead._id]" class="bg-blue-500 text-white px-3 py-1 mr-2 rounded">
+                        Edit
+                    </button>
+                    <button (click)="deleteLead(lead._id)" class="bg-red-500 text-white px-3 py-1 ml-2 rounded">
+                        Delete
+                    </button>
+                </td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</div>

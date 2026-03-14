@@ -1,0 +1,28 @@
+<app-sidebar></app-sidebar>
+<app-navbar></app-navbar>
+
+<div class="ml-64 p-6">
+
+<form (ngSubmit)="saveLead()" class="bg-white p-6 shadow rounded w-96">
+
+<h2 class="text-xl font-bold mb-4">Add Lead</h2>
+
+<input [(ngModel)]="name" name="name" placeholder="Name"
+class="w-full border p-2 mb-3">
+
+<input [(ngModel)]="email" name="email" placeholder="Email"
+class="w-full border p-2 mb-3">
+
+<input [(ngModel)]="phone" name="phone" placeholder="Phone"
+class="w-full border p-2 mb-3">
+
+<input [(ngModel)]="company" name="company" placeholder="Company"
+class="w-full border p-2 mb-3">
+
+<button class="bg-blue-600 text-white px-4 py-2 rounded">
+Add Lead
+</button>
+
+</form>
+
+</div>
