@@ -3,11 +3,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Lead } from '../../services/lead';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Navbar } from '../../shared/navbar/navbar';
+import { Sidebar } from '../../shared/sidebar/sidebar';
 
 @Component({
   selector: 'app-edit-lead',
   standalone: true,
-  imports:[CommonModule,FormsModule],
+  imports:[CommonModule,FormsModule, Navbar, Sidebar],
   templateUrl:'./edit-lead.html'
 })
 export class EditLead implements OnInit{

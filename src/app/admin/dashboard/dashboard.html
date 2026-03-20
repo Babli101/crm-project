@@ -1,25 +1,89 @@
 <app-sidebar></app-sidebar>
 <app-navbar></app-navbar>
 
-<div class="ml-64 p-6 bg-gray-100 min-h-screen">
+<div class="lg:ml-64 min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 p-4 md:p-6">
+  <div class="max-w-7xl mx-auto">
 
-<div class="grid grid-cols-3 gap-6">
+    <!-- Header -->
+    <div class="mb-8">
+      <h1 class="text-3xl font-bold text-gray-800">Dashboard</h1>
+      <p class="text-gray-500 mt-2">Welcome back! Here’s an overview of your CRM leads.</p>
+    </div>
 
-<div class="bg-white p-6 rounded shadow">
-<h2>Total Leads</h2>
-<p class="text-3xl">{{stats.total}}</p>
-</div>
+    <!-- Stats Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
 
-<div class="bg-white p-6 rounded shadow">
-<h2>Converted</h2>
-<p class="text-3xl text-green-600">{{stats.converted}}</p>
-</div>
+      <!-- Total Leads -->
+      <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 hover:shadow-xl transition duration-300">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-gray-500 text-sm font-medium">Total Leads</p>
+            <h2 class="text-4xl font-bold text-gray-800 mt-2">{{stats.total}}</h2>
+          </div>
+          <div class="w-14 h-14 rounded-full bg-blue-100 flex items-center justify-center">
+            <i class="fa-solid fa-users text-blue-600 text-xl"></i>
+          </div>
+        </div>
+        <div class="mt-4 text-sm text-gray-400">
+          All leads currently in your CRM
+        </div>
+      </div>
 
-<div class="bg-white p-6 rounded shadow">
-<h2>Pending</h2>
-<p class="text-3xl text-orange-500">{{stats.pending}}</p>
-</div>
+      <!-- Converted -->
+      <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 hover:shadow-xl transition duration-300">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-gray-500 text-sm font-medium">Converted</p>
+            <h2 class="text-4xl font-bold text-green-600 mt-2">{{stats.converted}}</h2>
+          </div>
+          <div class="w-14 h-14 rounded-full bg-green-100 flex items-center justify-center">
+            <i class="fa-solid fa-circle-check text-green-600 text-xl"></i>
+          </div>
+        </div>
+        <div class="mt-4 text-sm text-gray-400">
+          Leads successfully converted
+        </div>
+      </div>
 
-</div>
+      <!-- Pending -->
+      <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 hover:shadow-xl transition duration-300">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-gray-500 text-sm font-medium">Pending</p>
+            <h2 class="text-4xl font-bold text-orange-500 mt-2">{{stats.pending}}</h2>
+          </div>
+          <div class="w-14 h-14 rounded-full bg-orange-100 flex items-center justify-center">
+            <i class="fa-solid fa-clock text-orange-500 text-xl"></i>
+          </div>
+        </div>
+        <div class="mt-4 text-sm text-gray-400">
+          Leads waiting for follow-up
+        </div>
+      </div>
 
+    </div>
+
+    <!-- Optional Bottom Section -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-8">
+
+      <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6">
+        <h3 class="text-xl font-semibold text-gray-800 mb-3">CRM Summary</h3>
+        <p class="text-gray-500 leading-7">
+          This dashboard gives you a quick overview of your lead performance.
+          You can track total leads, monitor converted customers, and identify pending leads that need attention.
+        </p>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6">
+        <h3 class="text-xl font-semibold text-gray-800 mb-3">Quick Tips</h3>
+        <ul class="space-y-3 text-gray-500">
+          <li><i class="fa-solid fa-check text-blue-500 mr-2"></i> Review pending leads daily</li>
+          <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Update statuses regularly</li>
+          <li><i class="fa-solid fa-check text-orange-500 mr-2"></i> Track conversions for better follow-up</li>
+        </ul>
+      </div>
+
+    </div>
+
+  </div>
 </div>

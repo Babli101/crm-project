@@ -1,11 +1,18 @@
-<div class="ml-64 bg-white shadow p-4 flex justify-between">
+<div class="lg:ml-64 bg-white shadow px-4 md:px-6 py-4 flex items-center justify-between">
+  <div class="flex items-center gap-3">
+    <button class="lg:hidden text-gray-700 text-2xl" (click)="toggleSidebar()">
+      <i class="fa-solid fa-bars"></i>
+    </button>
 
-  <h1 class="text-xl font-semibold">
-    CRM Dashboard
-  </h1>
+    <h1 class="text-lg md:text-xl font-semibold text-gray-800">
+      CRM Dashboard
+    </h1>
+  </div>
 
-  <button (click)="logout()" class="bg-red-500 text-white px-4 py-2 rounded">
+  <button
+    (click)="logout()"
+    class="bg-red-500 hover:bg-red-600 text-white px-3 md:px-4 py-2 rounded-lg text-sm md:text-base"
+  >
     Logout
   </button>
-
 </div>

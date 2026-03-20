@@ -1,21 +1,27 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { SidebarService } from '../../services/sidebar';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './navbar.html',
-  styleUrl: './navbar.css',
+  styleUrls: ['./navbar.css'],
 })
 export class Navbar {
+  constructor(
+    private router: Router,
+    private sidebarService: SidebarService
+  ) {}
 
-  constructor(private router: Router) {}
-
-  logout(){
-    localStorage.removeItem("token");
-    this.router.navigate(['/']);
+  toggleSidebar() {
+    this.sidebarService.toggleSidebar();
   }
 
+  logout() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/']);
+  }
 }

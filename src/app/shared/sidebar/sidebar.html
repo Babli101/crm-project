@@ -1,29 +1,77 @@
-<div class="w-64 h-screen bg-gray-900 text-white fixed">
+<!-- Mobile Overlay -->
+<div
+  *ngIf="isSidebarOpen"
+  class="fixed inset-0 bg-black/50 z-40 lg:hidden"
+  (click)="toggleSidebar()"
+></div>
 
-  <div class="p-4 text-2xl font-bold border-b border-gray-700">
-    CRM Panel
+<!-- Sidebar -->
+<div
+  class="fixed top-0 left-0 h-screen w-64 bg-gradient-to-b from-gray-950 via-gray-900 to-gray-800 text-white z-50 transform transition-transform duration-300 shadow-2xl"
+  [ngClass]="{
+    'translate-x-0': isSidebarOpen,
+    '-translate-x-full': !isSidebarOpen,
+    'lg:translate-x-0': true
+  }"
+>
+  <!-- Logo -->
+  <div class="p-5 border-b border-white/10 flex items-center justify-between">
+    <div>
+      <h2 class="text-2xl font-bold tracking-wide text-white">CRM Panel</h2>
+      <p class="text-xs text-gray-400 mt-1">Lead Management System</p>
+    </div>
+
+    <!-- Close button mobile -->
+    <button class="lg:hidden text-white text-xl" (click)="toggleSidebar()">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
   </div>
 
-  <ul class="mt-6 space-y-3">
+  <!-- Menu -->
+  <div class="p-4">
+    <p class="text-xs uppercase tracking-[0.2em] text-gray-400 mb-4 px-3">Menu</p>
 
-    <li>
-      <a routerLink="/dashboard" class="block px-4 py-2 hover:bg-gray-700">
-        Dashboard
-      </a>
-    </li>
+    <ul class="space-y-2">
+      <li>
+        <a
+          routerLink="/dashboard"
+          routerLinkActive="bg-blue-600 text-white"
+          class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-200 hover:bg-white/10 hover:text-white transition-all duration-200"
+        >
+          <i class="fa-solid fa-chart-line w-5 text-center"></i>
+          <span>Dashboard</span>
+        </a>
+      </li>
 
-    <li>
-      <a routerLink="/leads" class="block px-4 py-2 hover:bg-gray-700">
-        Leads
-      </a>
-    </li>
+      <li>
+        <a
+          routerLink="/leads"
+          routerLinkActive="bg-blue-600 text-white"
+          class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-200 hover:bg-white/10 hover:text-white transition-all duration-200"
+        >
+          <i class="fa-solid fa-users w-5 text-center"></i>
+          <span>Leads</span>
+        </a>
+      </li>
 
-    <li>
-      <a routerLink="/add-lead" class="block px-4 py-2 hover:bg-gray-700">
-        Add Lead
-      </a>
-    </li>
+      <li>
+        <a
+          routerLink="/add-lead"
+          routerLinkActive="bg-blue-600 text-white"
+          class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-200 hover:bg-white/10 hover:text-white transition-all duration-200"
+        >
+          <i class="fa-solid fa-user-plus w-5 text-center"></i>
+          <span>Add Lead</span>
+        </a>
+      </li>
+    </ul>
+  </div>
 
-  </ul>
-
+  <!-- Bottom -->
+  <div class="absolute bottom-0 left-0 w-full p-4 border-t border-white/10">
+    <div class="bg-white/5 rounded-xl p-3">
+      <p class="text-sm font-semibold">CRM Admin</p>
+      <p class="text-xs text-gray-400 mt-1">Manage leads smoothly</p>
+    </div>
+  </div>
 </div>
