@@ -13,6 +13,7 @@
         </p>
       </div>
 
+      <!-- Search -->
       <div class="bg-white shadow-sm border border-gray-200 rounded-xl px-4 py-3 w-full lg:w-80">
         <div class="relative">
           <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
@@ -34,6 +35,7 @@
 
       <div class="overflow-x-auto">
         <table class="w-full text-sm text-left">
+
           <thead class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
             <tr>
               <th class="px-6 py-4 font-semibold">Name</th>
@@ -46,23 +48,31 @@
           </thead>
 
           <tbody class="divide-y divide-gray-100">
+
             <tr *ngFor="let lead of leads | filter:search" class="hover:bg-blue-50/60 transition duration-200">
+
               <td class="px-6 py-4 font-medium text-gray-800">{{lead.name}}</td>
               <td class="px-6 py-4 text-gray-600">{{lead.email}}</td>
               <td class="px-6 py-4 text-gray-600">{{lead.phone}}</td>
               <td class="px-6 py-4 text-gray-600">{{lead.company}}</td>
+
+              <!-- STATUS -->
               <td class="px-6 py-4">
                 <span
                   class="px-3 py-1 rounded-full text-xs font-semibold"
                   [ngClass]="{
                     'bg-blue-100 text-blue-700': lead.status === 'New',
                     'bg-yellow-100 text-yellow-700': lead.status === 'Contacted',
-                    'bg-green-100 text-green-700': lead.status === 'Converted'
+                    'bg-indigo-100 text-indigo-700': lead.status === 'Interested',
+                    'bg-green-100 text-green-700': lead.status === 'Converted',
+                    'bg-red-100 text-red-700': lead.status === 'Lost'
                   }"
                 >
                   {{lead.status}}
                 </span>
               </td>
+
+              <!-- ACTION -->
               <td class="px-6 py-4">
                 <div class="flex items-center justify-center gap-2">
                   <button
@@ -80,13 +90,16 @@
                   </button>
                 </div>
               </td>
+
             </tr>
 
+            <!-- EMPTY -->
             <tr *ngIf="(leads | filter:search)?.length === 0">
               <td colspan="6" class="text-center py-10 text-gray-500">
                 No leads found.
               </td>
             </tr>
+
           </tbody>
         </table>
       </div>
@@ -94,22 +107,27 @@
 
     <!-- Mobile Cards -->
     <div class="md:hidden space-y-4">
+
       <div
         *ngFor="let lead of leads | filter:search"
         class="bg-white rounded-2xl shadow-md border border-gray-100 p-4"
       >
+
         <div class="flex items-start justify-between gap-3">
           <div>
             <h3 class="text-base font-semibold text-gray-800">{{lead.name}}</h3>
             <p class="text-sm text-gray-500 mt-1">{{lead.company}}</p>
           </div>
 
+          <!-- STATUS MOBILE -->
           <span
             class="px-3 py-1 rounded-full text-[11px] font-semibold whitespace-nowrap"
             [ngClass]="{
               'bg-blue-100 text-blue-700': lead.status === 'New',
               'bg-yellow-100 text-yellow-700': lead.status === 'Contacted',
-              'bg-green-100 text-green-700': lead.status === 'Converted'
+              'bg-indigo-100 text-indigo-700': lead.status === 'Interested',
+              'bg-green-100 text-green-700': lead.status === 'Converted',
+              'bg-red-100 text-red-700': lead.status === 'Lost'
             }"
           >
             {{lead.status}}
@@ -117,18 +135,9 @@
         </div>
 
         <div class="mt-4 space-y-2 text-sm text-gray-600">
-          <p>
-            <span class="font-medium text-gray-700">Email:</span>
-            {{lead.email}}
-          </p>
-          <p>
-            <span class="font-medium text-gray-700">Phone:</span>
-            {{lead.phone}}
-          </p>
-          <p>
-            <span class="font-medium text-gray-700">Company:</span>
-            {{lead.company}}
-          </p>
+          <p><span class="font-medium text-gray-700">Email:</span> {{lead.email}}</p>
+          <p><span class="font-medium text-gray-700">Phone:</span> {{lead.phone}}</p>
+          <p><span class="font-medium text-gray-700">Company:</span> {{lead.company}}</p>
         </div>
 
         <div class="mt-4 flex items-center gap-2">
@@ -148,14 +157,17 @@
             Delete
           </button>
         </div>
+
       </div>
 
+      <!-- EMPTY MOBILE -->
       <div
         *ngIf="(leads | filter:search)?.length === 0"
         class="bg-white rounded-2xl shadow-md border border-gray-100 p-8 text-center text-gray-500"
       >
         No leads found.
       </div>
+
     </div>
 
   </div>

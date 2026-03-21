@@ -5,6 +5,7 @@ import { Leads } from './admin/leads/leads';
 import { AddLead } from './admin/add-lead/add-lead';
 import { EditLead } from './admin/edit-lead/edit-lead';
 import { authGuard } from './guards/auth-guard';
+import { Calendar } from './admin/calendar/calendar';
 
 export const routes: Routes = [
   {
@@ -27,5 +28,8 @@ export const routes: Routes = [
   {
     path: 'edit-lead/:id',
     component: EditLead
+  },
+  { path: 'calendar', 
+    component: Calendar
   }
 ];

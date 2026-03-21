@@ -1,0 +1,85 @@
+<app-navbar></app-navbar>
+<app-sidebar></app-sidebar>
+
+<div class="lg:ml-64 p-4 sm:p-6 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 min-h-screen">
+
+  <!-- HEADER -->
+  <div class="flex items-center justify-between mb-4 sm:mb-6">
+    <h2 class="text-xl sm:text-2xl font-bold text-gray-800 flex items-center gap-2">
+      📅 Calendar View
+    </h2>
+
+    <p class="text-xs sm:text-sm text-gray-500">
+      {{currentDate | date:'MMMM yyyy'}}
+    </p>
+  </div>
+
+  <!-- DAYS HEADER (SCROLLABLE) -->
+  <div class="overflow-x-auto mb-3">
+    <div class="grid grid-cols-7 min-w-[700px] text-xs sm:text-sm font-medium text-gray-500 text-center">
+      <div>Sun</div>
+      <div>Mon</div>
+      <div>Tue</div>
+      <div>Wed</div>
+      <div>Thu</div>
+      <div>Fri</div>
+      <div>Sat</div>
+    </div>
+  </div>
+
+  <!-- CALENDAR (SCROLLABLE) -->
+  <div class="overflow-x-auto">
+    <div class="grid grid-cols-7 gap-3 min-w-[700px]">
+
+      @for (day of calendarDays; track $index) {
+
+        <div 
+          class="bg-white rounded-xl p-2 sm:p-3 min-h-[90px] sm:min-h-[110px] shadow-sm hover:shadow-xl transition duration-300 border border-gray-100">
+
+          @if (day) {
+
+            <!-- DATE -->
+            <div class="flex justify-between items-center mb-1 sm:mb-2">
+              <span 
+                class="text-xs sm:text-sm font-semibold"
+                [ngClass]="{
+                  'text-indigo-600 font-bold': (day.date | date:'yyyy-MM-dd') === (today | date:'yyyy-MM-dd'),
+                  'text-gray-700': true
+                }">
+                {{day.date | date:'d'}}
+              </span>
+
+              @if (day.leads.length > 0) {
+                <span class="text-[9px] sm:text-[10px] bg-indigo-100 text-indigo-600 px-1.5 sm:px-2 py-[2px] rounded-full">
+                  {{day.leads.length}}
+                </span>
+              }
+            </div>
+
+            <!-- LEADS -->
+            <div class="space-y-1">
+
+              @for (lead of day.leads; track lead._id) {
+                <div 
+                  (click)="openLead(lead._id); $event.stopPropagation()"
+                  class="text-[10px] sm:text-xs bg-blue-100 text-blue-700 px-1.5 sm:px-2 py-1 rounded-lg cursor-pointer hover:bg-blue-200 transition truncate">
+
+                  {{lead.name}}
+                </div>
+              }
+
+            </div>
+
+          }
+
+        </div>
+
+      }
+
+    </div>
+  </div>
+
+</div>
+
+<!-- mongodb user id = bablithv101_db_user -->
+ <!-- password = buixsMitBkKVNhkx -->

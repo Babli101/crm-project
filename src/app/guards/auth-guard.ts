@@ -1,15 +1,22 @@
+import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
 
 export const authGuard: CanActivateFn = () => {
 
-  const token = localStorage.getItem("token");
+  const router = inject(Router);
 
-  if(token){
-    return true;
+  let token = "";
+
+  // ✅ SSR safe check
+  if (typeof window !== 'undefined') {
+    token = localStorage.getItem("token") || "";
   }
 
-  const router = new Router();
-  router.navigate(['/']);
-  return false;
+  if (token) {
+    return true;
+  } else {
+    router.navigate(['/']);
+    return false;
+  }
 
 };

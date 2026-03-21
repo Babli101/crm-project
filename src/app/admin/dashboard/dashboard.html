@@ -11,75 +11,108 @@
     </div>
 
     <!-- Stats Cards -->
-    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
 
       <!-- Total Leads -->
-      <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 hover:shadow-xl transition duration-300">
-        <div class="flex items-center justify-between">
+      <div class="bg-white rounded-2xl shadow-lg border p-6 hover:shadow-xl transition">
+        <div class="flex justify-between items-center">
           <div>
-            <p class="text-gray-500 text-sm font-medium">Total Leads</p>
-            <h2 class="text-4xl font-bold text-gray-800 mt-2">{{stats.total}}</h2>
+            <p class="text-sm text-gray-500">Total Leads</p>
+            <h2 class="text-3xl font-bold text-gray-800 mt-1">{{stats.total}}</h2>
           </div>
-          <div class="w-14 h-14 rounded-full bg-blue-100 flex items-center justify-center">
-            <i class="fa-solid fa-users text-blue-600 text-xl"></i>
+          <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center">
+            <i class="fa-solid fa-users text-blue-600"></i>
           </div>
-        </div>
-        <div class="mt-4 text-sm text-gray-400">
-          All leads currently in your CRM
         </div>
       </div>
 
       <!-- Converted -->
-      <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 hover:shadow-xl transition duration-300">
-        <div class="flex items-center justify-between">
+      <div class="bg-white rounded-2xl shadow-lg border p-6 hover:shadow-xl transition">
+        <div class="flex justify-between items-center">
           <div>
-            <p class="text-gray-500 text-sm font-medium">Converted</p>
-            <h2 class="text-4xl font-bold text-green-600 mt-2">{{stats.converted}}</h2>
+            <p class="text-sm text-gray-500">Converted</p>
+            <h2 class="text-3xl font-bold text-green-600 mt-1">{{stats.converted}}</h2>
           </div>
-          <div class="w-14 h-14 rounded-full bg-green-100 flex items-center justify-center">
-            <i class="fa-solid fa-circle-check text-green-600 text-xl"></i>
+          <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center">
+            <i class="fa-solid fa-circle-check text-green-600"></i>
           </div>
         </div>
-        <div class="mt-4 text-sm text-gray-400">
-          Leads successfully converted
+      </div>
+
+      <!-- Interested -->
+      <div class="bg-white rounded-2xl shadow-lg border p-6 hover:shadow-xl transition">
+        <div class="flex justify-between items-center">
+          <div>
+            <p class="text-sm text-gray-500">Interested</p>
+            <h2 class="text-3xl font-bold text-blue-600 mt-1">{{stats.interested}}</h2>
+          </div>
+          <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center">
+            <i class="fa-solid fa-thumbs-up text-blue-600"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lost -->
+      <div class="bg-white rounded-2xl shadow-lg border p-6 hover:shadow-xl transition">
+        <div class="flex justify-between items-center">
+          <div>
+            <p class="text-sm text-gray-500">Lost</p>
+            <h2 class="text-3xl font-bold text-red-500 mt-1">{{stats.lost}}</h2>
+          </div>
+          <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center">
+            <i class="fa-solid fa-xmark text-red-500"></i>
+          </div>
         </div>
       </div>
 
       <!-- Pending -->
-      <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 hover:shadow-xl transition duration-300">
-        <div class="flex items-center justify-between">
+      <div class="bg-white rounded-2xl shadow-lg border p-6 hover:shadow-xl transition">
+        <div class="flex justify-between items-center">
           <div>
-            <p class="text-gray-500 text-sm font-medium">Pending</p>
-            <h2 class="text-4xl font-bold text-orange-500 mt-2">{{stats.pending}}</h2>
+            <p class="text-sm text-gray-500">Pending</p>
+            <h2 class="text-3xl font-bold text-orange-500 mt-1">{{stats.pending}}</h2>
           </div>
-          <div class="w-14 h-14 rounded-full bg-orange-100 flex items-center justify-center">
-            <i class="fa-solid fa-clock text-orange-500 text-xl"></i>
+          <div class="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center">
+            <i class="fa-solid fa-clock text-orange-500"></i>
           </div>
-        </div>
-        <div class="mt-4 text-sm text-gray-400">
-          Leads waiting for follow-up
         </div>
       </div>
+      <!-- Today's Follow-ups -->
+      <div class="bg-white rounded-2xl shadow-lg border p-6 hover:shadow-xl transition">
+        <div class="flex justify-between items-center">
+          <div>
+            <p class="text-sm text-gray-500">Today's Follow-ups</p>
+            <h2 class="text-3xl font-bold text-purple-600 mt-1">
+              {{todayCount}}
+            </h2>
+          </div>
 
+          <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center">
+            <i class="fa-solid fa-bell text-purple-600"></i>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <!-- Optional Bottom Section -->
+    <!-- Bottom Section -->
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-8">
 
-      <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6">
+      <!-- Summary -->
+      <div class="bg-white rounded-2xl shadow-lg border p-6">
         <h3 class="text-xl font-semibold text-gray-800 mb-3">CRM Summary</h3>
         <p class="text-gray-500 leading-7">
-          This dashboard gives you a quick overview of your lead performance.
-          You can track total leads, monitor converted customers, and identify pending leads that need attention.
+          Track your leads efficiently with categorized insights like interested, converted, and lost leads.
+          Stay on top of pending follow-ups to improve your conversion rate.
         </p>
       </div>
 
-      <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6">
+      <!-- Tips -->
+      <div class="bg-white rounded-2xl shadow-lg border p-6">
         <h3 class="text-xl font-semibold text-gray-800 mb-3">Quick Tips</h3>
         <ul class="space-y-3 text-gray-500">
-          <li><i class="fa-solid fa-check text-blue-500 mr-2"></i> Review pending leads daily</li>
-          <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Update statuses regularly</li>
-          <li><i class="fa-solid fa-check text-orange-500 mr-2"></i> Track conversions for better follow-up</li>
+          <li><i class="fa-solid fa-check text-blue-500 mr-2"></i> Follow up with interested leads quickly</li>
+          <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Focus on converting hot leads</li>
+          <li><i class="fa-solid fa-check text-red-500 mr-2"></i> Analyze why leads are getting lost</li>
         </ul>
       </div>
 
